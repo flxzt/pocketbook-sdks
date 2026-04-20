@@ -14,7 +14,9 @@ SDK-B300-6.10.7z \
 "
 
 for sdk in ${SDKS}; do
-    curl -LfO "${REPO_URL}/releases/latest/download/${sdk}"
+    echo "Downloading ${sdk}"
+    rm -rf "${SCRIPT_DIR:?}/${sdk}"
+    curl --output-dir "${SCRIPT_DIR}" -LfO "${REPO_URL}/releases/latest/download/${sdk}"
 done
 
 for archive in "${SCRIPT_DIR}"/*.7z; do
